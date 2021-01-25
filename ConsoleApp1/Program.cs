@@ -14,9 +14,9 @@ namespace WorkingFiles
             try
             {
                 sr = File.OpenText(path);
-                string line = sr.ReadLine();
-
+                while (!sr.EndOfStream)
                 {
+                    string line = sr.ReadLine();
                     Console.WriteLine(line);
                 }
                 Console.ReadKey();
