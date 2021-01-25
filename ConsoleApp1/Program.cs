@@ -8,12 +8,18 @@ namespace WorkingFiles
         static void Main(string[] args)
         {
             string sourcePath = @"c:\teste\file1.txt";
-            string targetPath = @"c:\teste\copyOffile1.txt";
+            string targetPath = @"c:\teste\copyOffile2.txt";
 
             try
             {
                 FileInfo fileInfo = new FileInfo(sourcePath);
                 fileInfo.CopyTo(targetPath);
+                string[] lines = File.ReadAllLines(sourcePath);
+                foreach(string line in lines)
+                {
+                    Console.WriteLine(line);
+                }
+                Console.ReadKey();
 
             }
             catch (IOException e)
