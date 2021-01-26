@@ -7,20 +7,22 @@ namespace WorkingFiles
     {
         static void Main(string[] args)
         {
-            string path = @"c:\teste\file1.txt";
+            string sourcePath = @"c:\teste\file1.txt";
+            string targetPath = @"c:\teste\file2.text";
             
             
             try
             {
-                using (StreamReader sr = File.OpenText(path))
+                string[] lines = File.ReadAllLines(sourcePath);
+
+                using (StreamWriter sw = File.AppendText(targetPath))
                     {
-                        while (!sr.EndOfStream)
+                        foreach (string line in lines)
                         {
-                            string line = sr.ReadLine();
-                            Console.WriteLine(line);
+                        sw.WriteLine(line.ToUpper());
                         }
                     }
-               
+                Console.WriteLine("Enter");
                 Console.ReadKey();
 
             }
