@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace WorkingFiles
 {
@@ -7,21 +8,18 @@ namespace WorkingFiles
     {
         static void Main(string[] args)
         {
-            string sourcePath = @"c:\teste\file1.txt";
-            string targetPath = @"c:\teste\file2.text";
+            string path = @"c:\teste";      
             
             
             try
             {
-                string[] lines = File.ReadAllLines(sourcePath);
+                IEnumerable<string> folders = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
+                Console.WriteLine("FOLDERS: ");
+                foreach (string s in folders)
+                {
+                    Console.WriteLine(s);
+                }
 
-                using (StreamWriter sw = File.AppendText(targetPath))
-                    {
-                        foreach (string line in lines)
-                        {
-                        sw.WriteLine(line.ToUpper());
-                        }
-                    }
                 Console.WriteLine("Enter");
                 Console.ReadKey();
 
