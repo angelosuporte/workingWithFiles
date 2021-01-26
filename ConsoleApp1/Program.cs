@@ -25,6 +25,8 @@ namespace WorkingFiles
                 {
                     Console.WriteLine(s);
                 }
+
+                Directory.CreateDirectory(@"c:\teste\directoryCreated");
                 Console.WriteLine("Enter");
                 Console.ReadKey();
 
