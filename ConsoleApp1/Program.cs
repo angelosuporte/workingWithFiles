@@ -9,15 +9,19 @@ namespace WorkingFiles
         {
             string path = @"c:\teste\file1.txt";
             
-            StreamReader sr = null;
-
+            
             try
             {
-                sr = File.OpenText(path);
-                while (!sr.EndOfStream)
+                using (FileStream fs = new FileStream(path, FileMode.Open))
                 {
-                    string line = sr.ReadLine();
-                    Console.WriteLine(line);
+                    using (StreamReader sr = new StreamReader(fs))
+                    {
+                        while (!sr.EndOfStream)
+                        {
+                            string line = sr.ReadLine();
+                            Console.WriteLine(line);
+                        }
+                    }
                 }
                 Console.ReadKey();
 
@@ -28,10 +32,7 @@ namespace WorkingFiles
                 Console.WriteLine("An error ocurred");
                 Console.WriteLine(e.Message);
             }
-            finally //It is necessary to close manually
-            {
-                if (sr != null) sr.Close();
-            }
+            
         }
     }
 }
