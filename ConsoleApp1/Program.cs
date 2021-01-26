@@ -12,9 +12,7 @@ namespace WorkingFiles
             
             try
             {
-                using (FileStream fs = new FileStream(path, FileMode.Open))
-                {
-                    using (StreamReader sr = new StreamReader(fs))
+                using (StreamReader sr = File.OpenText(path))
                     {
                         while (!sr.EndOfStream)
                         {
@@ -22,7 +20,7 @@ namespace WorkingFiles
                             Console.WriteLine(line);
                         }
                     }
-                }
+               
                 Console.ReadKey();
 
             }
